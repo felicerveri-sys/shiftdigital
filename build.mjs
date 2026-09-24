@@ -17,7 +17,6 @@ import { promisify } from "node:util";
 import { transformAsync } from "@babel/core";
 
 const ejecutar = promisify(execFile);
-const RAIZ = new URL("./", import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, "$1");
 const kb = (t) => (t.length / 1024).toFixed(1) + " KB";
 
 // ---------------------------------------------------------------- 1. Limpiar
@@ -46,8 +45,7 @@ console.log("  assets/app.js    " + kb(js));
 // en Windows, macOS y en el build de Vercel.
 await ejecutar(
   process.execPath,
-  ["node_modules/tailwindcss/lib/cli.js", "-i", "./src/input.css", "-o", "./dist/assets/styles.css", "--minify"],
-  { cwd: RAIZ }
+  ["node_modules/tailwindcss/lib/cli.js", "-i", "./src/input.css", "-o", "./dist/assets/styles.css", "--minify"]
 );
 const css = await readFile("dist/assets/styles.css", "utf8");
 console.log("  assets/styles.css " + kb(css));
