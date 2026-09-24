@@ -1,0 +1,14 @@
+# Dependencias
+node_modules/
+
+# Build generado por "npm run build" (Vercel lo genera en cada deploy)
+dist/
+
+# Videos originales en 1080p60: pesados y no los usa la pagina.
+# La web usa las versiones optimizadas de portfolio/web/, que SI se suben.
+/portfolio/*.mp4
+
+# Sistema
+.DS_Store
+Thumbs.db
+*.log
